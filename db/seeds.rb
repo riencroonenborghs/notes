@@ -1,0 +1,1 @@
+user = User.create!(name: ENV["NAME"], email: ENV["EMAIL"], password: ENV["PASSWORD"], password_confirmation: ENV["PASSWORD"])

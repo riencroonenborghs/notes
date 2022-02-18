@@ -1,0 +1,9 @@
+- content_for :title do
+  \- Edit existing note
+
+.container
+  .subtitle.pt-3
+    Edit existing note
+
+  .pt-4
+    = render 'form', note: @note

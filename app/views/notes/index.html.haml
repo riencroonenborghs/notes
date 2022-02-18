@@ -1,0 +1,10 @@
+- content_for :title do
+  \- All notes
+
+.container
+  -#.subtitle.pt-3
+    All notes
+
+  .pt-4
+    - @notes.each do |note|
+      = render partial: "note", locals: { note: note }

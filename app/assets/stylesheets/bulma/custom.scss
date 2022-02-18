@@ -1,0 +1,30 @@
+.fa-size-2 {
+  font-size: 2rem;
+}
+
+.is-size-8 {
+  font-size: 0.5rem;
+}
+
+.has-text-weight-lighter {
+  font-weight: 100;
+}
+
+.tag {
+  &--small {
+    font-size: 0.5rem !important;
+  }
+}
+
+.message {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+a {
+  color: $primary;
+  &:hover {
+    color: $primary-dark;
+  }
+}

@@ -1,0 +1,51 @@
+%nav.navbar(role="navigation" aria-label="main navigation")
+  .navbar-brand
+    = link_to root_path, class: "navbar-item has-text-primary" do
+      = fa_regular "sticky-note"
+      .subtitle.pl-4.has-text-primary Notes
+    = link_to "", class: "navbar-burger", role: "button", "aria-label" => "menu", "aria-expanded" => "false", "data-target" => "navbar-mobile"do
+      %span(aria-hidden="true")
+      %span(aria-hidden="true")
+      %span(aria-hidden="true")
+
+  #navbar-mobile.navbar-menu
+    .navbar-start
+      = link_to "All notes", root_path, class: "navbar-item"
+
+      = form_with model: current_user.notes.new, url: notes_path, method: :post, class: "navbar-item" do |form|
+        .is-flex.is-flex-direction-row
+          = form.text_field :title, placeholder: "Note title", class: "input note-title"
+          .pl-4
+          = form.submit "Start new note", class: "button is-primary"
+    -#
+      <a class="navbar-item">
+        Documentation
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div>
+
+    .navbar-end
+      .navbar-item
+        .buttons
+          = button_to destroy_user_session_path, method: :delete, title: "Log out", class: "button is-primary" do
+            = fa_solid "lock", size: 1

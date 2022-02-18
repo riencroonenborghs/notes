@@ -1,0 +1,9 @@
+- if flash[:alert]
+  %article.message.is-danger
+    .message-body
+      = flash[:alert]
+
+- if flash[:notice]
+  %article.message.is-success
+    .message-body
+      = flash[:notice]

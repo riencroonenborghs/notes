@@ -1,0 +1,33 @@
+- content_for :title do
+  \- Log in
+
+.is-page-horizontal-centered
+  %div(style="width: 450px")
+    .subtitle.pt-3 Log in
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |form|
+      .columns
+        .column
+          .field
+            = form.label :email, class: "label"
+          .control
+            = form.email_field :email, autofocus: true, autocomplete: "email", class: "input"
+
+      .columns
+        .column
+          .field
+            = form.label :password, class: "label"
+          .control
+            = form.password_field :password, autocomplete: "current-password", class: "input"
+
+      - if devise_mapping.rememberable?
+        .columns
+          .column
+            .field
+              = form.label :remember_me, class: "checkbox" do              
+                = form.check_box :remember_me
+                Remember me
+
+      .columns
+        .column
+          = form.submit "Log in", class: "button is-primary"

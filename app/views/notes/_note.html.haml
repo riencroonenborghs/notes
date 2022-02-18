@@ -1,0 +1,27 @@
+.card.note
+  -#
+    .card-image
+      %figure(class="image")
+        = image_tag "https://bulma.io/images/placeholders/1280x960.png", alt: "Placeholder image"
+  .card-content
+    .media
+      .media-content
+        %p.title.is-3
+          = note.title
+        %time.is-size-8.has-text-weight-lighter(datetime="#{note.created_at.to_formatted_s(:note_created_at)}")
+          = note.created_at.to_formatted_s(:note_created_at)
+    .content
+      .is-flex.is-flex-direction-column
+        = note.note
+      .is-flex.is-flex-direction-row.pt-4
+        - note.tags.each.with_index do |tag, index|
+          %span.tag.tag--small.is-light(class="#{'ml-2' if index > 0}")
+            = tag
+  %footer.card-footer
+    = link_to edit_note_path(note), class: "card-footer-item" do
+      = fa_solid "save", size: 1
+      Edit
+    = link_to "#", class: "card-footer-item has-text-danger" do
+      = fa_solid "trash", size: 1
+      Delete
+        

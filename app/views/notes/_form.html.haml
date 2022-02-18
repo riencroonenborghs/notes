@@ -1,0 +1,48 @@
+= form_with(model: note) do |form|
+  -#<% if note.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
+
+      <ul>
+        <% note.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+
+  .columns
+    .column.is-three-quarters
+      .field
+        = form.label :title, class: "label"
+        .control
+          = form.text_field :title, class: "input #{'is-danger' if note.errors[:title].any?}", value: note.title
+          - if note.errors[:title].any?
+            .has-text-danger.is-size-7
+              = note.errors[:title].join(', ')
+
+  .columns
+    .column.is-three-quarters
+      .field
+        = form.label :tag_list, class: "label"
+        .control
+          = form.text_field :tag_list, class: "input #{'is-danger' if note.errors[:tag_list].any?}", value: note.tag_list.join(', ')
+          .is-size-7.has-text-weight-lighter comma separated like "cooking, indian, spicy"
+          - if note.errors[:tag_list].any?
+            .has-text-danger.is-size-7
+              = note.errors[:tag_list].join(', ')
+
+  .columns
+    .column.is-three-quarters
+      .field
+        = form.label :note, class: "label"
+        .control
+          = form.text_area :note, class: "textarea #{'is-danger' if note.errors[:note].any?}", value: note.note
+          - if note.errors[:note].any?
+            .has-text-danger.is-size-7
+              = note.errors[:note].join(', ')
+  
+  .columns
+    .column
+      .field
+        .control
+          = form.submit "#{note.persisted? ? 'Update note' : 'Create note'}", class: "button is-primary"

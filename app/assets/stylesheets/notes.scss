@@ -1,0 +1,15 @@
+.note {
+  width: 400px;
+
+  .media {
+    margin-bottom: 0px !important;
+
+    &-content {
+      p {
+        &.title {
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+}

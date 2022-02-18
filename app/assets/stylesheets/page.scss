@@ -1,0 +1,12 @@
+.is-page-horizontal-centered {
+  @extend .is-flex;
+  @extend .is-flex-direction-row;
+  @extend .is-justify-content-center;
+}
+
+.is-page-vertical-centered {
+  @extend .is-flex;
+  @extend .is-flex-direction-column;
+  @extend .is-justify-content-center;
+  height: calc(100vh)
+}
