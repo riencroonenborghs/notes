@@ -24,7 +24,7 @@ class NotesController < ApplicationController
     @note = current_user.notes.build(note_params)
 
     if @note.save
-      redirect_to @note, notice: "Note was successfully created."
+      redirect_to notes_path, notice: "Note was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -42,7 +42,7 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   def destroy
     @note.destroy
-    redirect_to notes_url, notice: "Note was successfully destroyed."
+    redirect_to notes_path, notice: "Note was successfully destroyed."
   end
 
   private
@@ -54,6 +54,6 @@ class NotesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def note_params
-    params.require(:note).permit(:title, :note, :tag_list)
+    params.require(:note).permit(:title, :markdown, :html, :tag_list)
   end
 end

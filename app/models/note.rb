@@ -3,5 +3,5 @@ class Note < ApplicationRecord
   
   belongs_to :user
 
-  validates :title, :note, presence: true
+  validates :title, :markdown, :html, presence: true
 end

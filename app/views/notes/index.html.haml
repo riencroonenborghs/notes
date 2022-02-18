@@ -6,5 +6,8 @@
     All notes
 
   .pt-4
-    - @notes.each do |note|
-      = render partial: "note", locals: { note: note }
+    - @notes.in_groups_of(3).each do |group|
+      .columns
+        - group.compact.each do |note|
+          .column.is-one-third
+            = render partial: "note", locals: { note: note }

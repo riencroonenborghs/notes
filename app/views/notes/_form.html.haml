@@ -11,7 +11,7 @@
     </div>
 
   .columns
-    .column.is-three-quarters
+    .column.is-half
       .field
         = form.label :title, class: "label"
         .control
@@ -19,9 +19,7 @@
           - if note.errors[:title].any?
             .has-text-danger.is-size-7
               = note.errors[:title].join(', ')
-
-  .columns
-    .column.is-three-quarters
+    .column.is-half
       .field
         = form.label :tag_list, class: "label"
         .control
@@ -31,15 +29,21 @@
             .has-text-danger.is-size-7
               = note.errors[:tag_list].join(', ')
 
-  .columns
-    .column.is-three-quarters
+  .columns(data-controller="markdown")
+    .column.is-half
       .field
-        = form.label :note, class: "label"
+        = form.label :markdown, class: "label"
         .control
-          = form.text_area :note, class: "textarea #{'is-danger' if note.errors[:note].any?}", value: note.note
-          - if note.errors[:note].any?
+          = form.text_area :markdown, class: "textarea #{'is-danger' if note.errors[:markdown].any?}", value: note.markdown, data: { "markdown-target" => "markdown", action: "keyup->markdown#markdownChanged" }
+          - if note.errors[:markdown].any?
             .has-text-danger.is-size-7
-              = note.errors[:note].join(', ')
+              = note.errors[:markdown].join(', ')
+    .column.is-half
+      = form.hidden_field :html, value: note.html, data: { "markdown-target" => "html" }
+      .is-size-5
+        Preview
+      .preview(data-markdown-target="preview")
+        = raw note.html
   
   .columns
     .column

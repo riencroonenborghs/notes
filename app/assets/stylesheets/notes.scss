@@ -1,6 +1,4 @@
 .note {
-  width: 400px;
-
   .media {
     margin-bottom: 0px !important;
 
@@ -11,5 +9,11 @@
         }
       }
     }
+  }
+}
+
+.notes_new, .notes_create, .notes_edit, .notes_update {
+  textarea {
+    height: 400px;
   }
 }

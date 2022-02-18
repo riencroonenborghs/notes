@@ -1,0 +1,32 @@
+.preview, .card-content .content .html {
+  * {
+    @extend .m-0;
+    @extend .p-0;
+  }
+
+  h1 {
+    @extend .is-size-3;
+    @extend .has-text-weight-medium;
+  }
+  h2 {
+    @extend .is-size-4;
+    @extend .has-text-weight-medium;
+  }
+  h3 {
+    @extend .is-size-5;
+    @extend .has-text-weight-medium;
+  }
+  h4 {
+    @extend .is-size-6;
+    @extend .has-text-weight-medium;
+  }
+  h5 {
+    @extend .is-size-7;
+    @extend .has-text-weight-medium;
+  }
+  ul {
+    @extend .pl-4;
+    @extend .ml-4;
+    li { list-style: outside; }
+  }
+}
