@@ -41,7 +41,8 @@ class Import
 
       if note
         set_title(json, note: note)
-        add_tags(json, note: note)
+        set_tags(json, note: note)
+        set_image(json, note: note)
         set_timestamps(json, note: note)
         note.save!
       end
@@ -82,13 +83,25 @@ class Import
     return text unless text
     
     html = Kramdown::Document.new(text).to_html
-    html.gsub("\n\n", "<br />").gsub("\n", "<br />")
+    html = html.gsub("\n\n", "<br />").gsub("\n", "<br />")
   end
 
-  def add_tags(json, note:)
+  def set_tags(json, note:)
     return unless json.key?("labels")
 
     note.tag_list = json["labels"].map { |label| label["name"] }.join(", ")
+  end
+
+  def set_image(json, note:)
+    return unless json.key?("attachments")
+
+    attachment = json["attachments"][0]
+    image_path = File.join(path, attachment["filePath"].gsub("jpeg", "jpg"))
+    
+    data = nil
+    File.open(image_path, "r") { |file| data = file.read }
+    
+    note.image = data if data
   end
 
   def set_timestamps(json, note:)
