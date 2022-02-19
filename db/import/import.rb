@@ -33,14 +33,16 @@ class Import
   def import
     user.notes.destroy_all
 
-    by_name.each do |title, path|
+    by_name.each do |_title, path|
       json = read_parsed_json_file(path)
     
-      note = build_text_note(json, title: title) if json.key?("textContent")
-      note = build_list_note(json, title: title) if json.key?("listContent")
+      note = build_text_note(json) if json.key?("textContent")
+      note = build_list_note(json) if json.key?("listContent")
 
       if note
+        set_title(json, note: note)
         add_tags(json, note: note)
+        set_timestamps(json, note: note)
         note.save!
       end
     end
@@ -52,26 +54,28 @@ class Import
     JSON.parse(data)
   end
 
-  def build_text_note(json, title:)
+  def build_text_note(json)
     text = json["textContent"]
     html = text_to_html(text)
 
     user.notes.build(
-      title: title,
       markdown: text,
       html: html
     )
   end
 
-  def build_list_note(json, title:)
+  def build_list_note(json)
     text = json["listContent"][0]["text"]
     html = text_to_html(text)
 
     user.notes.build(
-      title: title,
       markdown: text,
       html: html
     )
+  end
+
+  def set_title(json, note:)
+    note.title = json["title"]
   end
 
   def text_to_html(text)
@@ -85,6 +89,11 @@ class Import
     return unless json.key?("labels")
 
     note.tag_list = json["labels"].map { |label| label["name"] }.join(", ")
+  end
+
+  def set_timestamps(json, note:)
+    note.created_at = Time.at(json["createdTimestampUsec"] / 1_000_000).to_datetime
+    note.updated_at = Time.at(json["userEditedTimestampUsec"] / 1_000_000).to_datetime
   end
 end
 

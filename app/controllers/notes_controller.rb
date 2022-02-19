@@ -3,7 +3,7 @@ class NotesController < ApplicationController
 
   # GET /notes
   def index
-    @notes = current_user.notes.page(params[:page])
+    @notes = current_user.notes.order(created_at: :desc).page(params[:page])
   end
 
   # GET /notes/1
@@ -47,7 +47,7 @@ class NotesController < ApplicationController
 
   def tagged
     @tag_name = params[:tag].downcase
-    @notes = current_user.notes.tagged_with(@tag_name).page(params[:page])
+    @notes = current_user.notes.tagged_with(@tag_name).order(created_at: :desc).page(params[:page])
   end
 
   private
