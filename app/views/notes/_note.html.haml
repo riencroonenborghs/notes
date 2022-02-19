@@ -1,8 +1,8 @@
 .card.note
-  -#
+  - if note.image
     .card-image
       %figure(class="image")
-        = image_tag "https://bulma.io/images/placeholders/1280x960.png", alt: "Placeholder image"
+        = image_tag note.image.url
   .card-content
     .media
       .media-content

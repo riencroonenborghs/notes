@@ -10,13 +10,14 @@
 
   #navbar-mobile.navbar-menu
     .navbar-start
-      = link_to "All notes", root_path, class: "navbar-item"
+      -#= link_to "All notes", root_path, class: "navbar-item"
 
       = form_with model: current_user.notes.new, url: notes_path, method: :post, class: "navbar-item" do |form|
         .is-flex.is-flex-direction-row
-          = form.text_field :title, placeholder: "Note title", class: "input note-title"
+          = form.text_field :query, placeholder: "Search ...", class: "input query"
           .pl-4
-          = form.submit "Start new note", class: "button is-primary"
+          %button(type="submit" class="button is-primary")
+            = fa_solid "search", size: 1
     -#
       <a class="navbar-item">
         Documentation

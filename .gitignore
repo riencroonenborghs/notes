@@ -40,3 +40,5 @@
 /node_modules
 /yarn-error.log
 /db/import/GoogleKeep
+/public/system
+/.env

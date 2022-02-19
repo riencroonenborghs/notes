@@ -5,6 +5,7 @@ ruby "2.7.5"
 
 gem "acts-as-taggable-on"
 gem "dotenv-rails"
+gem "dragonfly"
 gem "cssbundling-rails"
 gem "devise"
 gem "haml"

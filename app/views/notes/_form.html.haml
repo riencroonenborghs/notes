@@ -11,6 +11,27 @@
     </div>
 
   .columns
+    - if note.image
+      .column.is-one-quarter
+        %figure.image.is-128x128
+          = image_tag note.image.url
+    .column.is-two-thirds
+      .file(class="#{'has-name is-fullwidth' if note.image}")
+        %label.file-label
+          = form.file_field :image, class: "file-input"
+          %span.file-cta
+            %span.file-icon
+              %i.fas.fa-upload
+            %span.file-label
+              Choose a file ...
+          - if note.image
+            %span.file-name
+              = note.image_uid
+      -#.field
+        .control
+          = form.file_field :image
+
+  .columns
     .column.is-half
       .field
         = form.label :title, class: "label"

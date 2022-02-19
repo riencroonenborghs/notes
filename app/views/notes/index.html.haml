@@ -5,11 +5,18 @@
   -#.subtitle.pt-3
     All notes
 
+  .is-page-horizontal-centered.new-note
+    = form_with model: current_user.notes.new, url: notes_path, method: :post, class: "navbar-item" do |form|
+      .is-flex.is-flex-direction-row
+        = form.text_field :title, placeholder: "Note title", class: "input note-title"
+        .pl-4
+        = form.submit "Start new note", class: "button is-primary"
+
   .pt-4
-    - @notes.in_groups_of(3).each do |group|
+    - @notes.in_groups_of(4).each do |group|
       .columns
         - group.compact.each do |note|
-          .column.is-one-third
+          .column.is-one-quarter
             = render partial: "note", locals: { note: note }
 
   .pt-4.mt-4.mb-4.pb-4.is-page-horizontal-centered
