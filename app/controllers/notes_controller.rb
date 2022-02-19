@@ -45,6 +45,11 @@ class NotesController < ApplicationController
     redirect_to notes_path, notice: "Note was successfully destroyed."
   end
 
+  def tagged
+    @tag_name = params[:tag].downcase
+    @notes = current_user.notes.tagged_with(@tag_name).page(params[:page])
+  end
+
   private
     
   # Use callbacks to share common setup or constraints between actions.

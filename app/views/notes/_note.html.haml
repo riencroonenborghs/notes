@@ -16,7 +16,7 @@
       .is-flex.is-flex-direction-row.pt-4
         - note.tags.each.with_index do |tag, index|
           %span.tag.tag--small.is-light(class="#{'ml-2' if index > 0}")
-            = tag
+            = link_to tag.name.downcase, notes_tagged_path(tag.name.downcase)
   %footer.card-footer
     = link_to edit_note_path(note), class: "card-footer-item" do
       = fa_solid "save", size: 1
