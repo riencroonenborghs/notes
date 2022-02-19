@@ -12,7 +12,7 @@
     .navbar-start
       -#= link_to "All notes", root_path, class: "navbar-item"
 
-      = form_with model: current_user.notes.new, url: notes_path, method: :post, class: "navbar-item" do |form|
+      = form_with scope: current_user.notes.new, url: note_search_path, method: :post, class: "navbar-item" do |form|
         .is-flex.is-flex-direction-row
           = form.text_field :query, placeholder: "Search ...", class: "input query"
           .pl-4

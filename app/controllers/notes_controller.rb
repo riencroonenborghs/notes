@@ -50,6 +50,17 @@ class NotesController < ApplicationController
     @notes = current_user.notes.tagged_with(@tag_name).order(created_at: :desc).page(params[:page])
   end
 
+  def search
+    @query = params.require(:note).permit(:query)[:query]
+
+    service = SearchService.call(
+      user: current_user,
+      query: @query,
+      page: params[:page]
+    )
+    @notes = service.notes
+  end
+
   private
     
   # Use callbacks to share common setup or constraints between actions.

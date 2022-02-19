@@ -12,10 +12,14 @@ gem "haml"
 gem "jsbundling-rails"
 gem "kaminari"
 gem "kramdown" # import
+gem "mina"
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.1"
+gem "rake" , ">= 0.9.2"
 gem "sprockets-rails"
 gem "sqlite3"
+# lock it for now
+gem "strscan", "1.0.3"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

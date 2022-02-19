@@ -42,3 +42,4 @@
 /db/import/GoogleKeep
 /public/system
 /.env
+/config/deploy.rb

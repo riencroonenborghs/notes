@@ -1,15 +1,15 @@
 - content_for :title do
-  \- Notes tagged with '#{@tag_name}'
+  \- Notes for '#{@query}'
 
 .container
   .is-flex.is-align-items-center
     .title.pt-3
-      Notes tagged with 
+      Notes for
       %span.tag.is-size-5
-        = @tag_name
+        = @query
     = link_to root_path, class: "button is-primary ml-4 is-size-8 mb-2" do
       = fa_solid "times", size: 1
-      
+
   .pt-4
     - @notes.in_groups_of(3).each do |group|
       .columns
