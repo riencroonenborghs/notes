@@ -1,0 +1,12 @@
+nav.pagination {
+  .first, .prev, .page, .next, .last {
+    @extend .button;
+    @extend .mr-2;
+    @extend .is-white;
+  }
+  .page {
+    &.current {
+      @extend .is-primary;
+    }
+  }
+}

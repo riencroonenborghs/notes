@@ -9,6 +9,8 @@ gem "cssbundling-rails"
 gem "devise"
 gem "haml"
 gem "jsbundling-rails"
+gem "kaminari"
+gem "kramdown" # import
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.1"
 gem "sprockets-rails"

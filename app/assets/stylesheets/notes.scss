@@ -10,6 +10,14 @@
       }
     }
   }
+
+  .content {
+    .html {
+      max-height: 190px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }
 
 .notes_new, .notes_create, .notes_edit, .notes_update {

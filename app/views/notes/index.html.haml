@@ -11,3 +11,6 @@
         - group.compact.each do |note|
           .column.is-one-third
             = render partial: "note", locals: { note: note }
+
+  .pt-4.mt-4.mb-4.pb-4.is-page-horizontal-centered
+    = paginate @notes

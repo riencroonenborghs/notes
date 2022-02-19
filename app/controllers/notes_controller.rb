@@ -3,7 +3,7 @@ class NotesController < ApplicationController
 
   # GET /notes
   def index
-    @notes = current_user.notes.all
+    @notes = current_user.notes.page(params[:page])
   end
 
   # GET /notes/1
