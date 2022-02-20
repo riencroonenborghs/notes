@@ -7,7 +7,7 @@
     .media
       .media-content
         %p.title.is-3
-          = note.title
+          = link_to note.title, note_path(note)
         %time.is-size-8.has-text-weight-lighter(datetime="#{note.created_at.to_formatted_s(:note_created_at)}")
           = note.created_at.to_formatted_s(:note_created_at)
     .content

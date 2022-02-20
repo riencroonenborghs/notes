@@ -1,0 +1,22 @@
+- content_for :title do
+  \-
+  = @note.title
+
+.container
+  - if @note.image
+    %figure(class="image")
+      = image_tag @note.image.url
+
+  .title.pt-3.mb-0
+    = @note.title
+  
+  %time.is-size-8.has-text-weight-lighter(datetime="#{@note.created_at.to_formatted_s(:note_created_at)}")
+    = @note.created_at.to_formatted_s(:note_created_at)
+
+  %p
+    = raw @note.html
+  
+  .is-flex.is-flex-direction-row.pt-4
+    - @note.tags.each.with_index do |tag, index|
+      %span.tag.tag--small.is-light(class="#{'ml-2' if index > 0}")
+        = link_to tag.name.downcase, notes_tagged_path(tag.name.downcase)

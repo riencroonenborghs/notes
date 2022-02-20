@@ -7,7 +7,11 @@
       .is-flex.is-flex-direction-row
         = form.text_field :title, placeholder: "Note title", class: "input note-title"
         .pl-4
-        = form.submit "Start new note", class: "button is-primary"
+        %button(type="submit" class="button is-primary")
+          - if mobile?
+            = fa_solid "play", size: 1
+          - else
+            Start new note
 
   .pt-4
     - @notes.in_groups_of(mobile? ? 1 : 4).each do |group|
