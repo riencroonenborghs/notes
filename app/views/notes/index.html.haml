@@ -2,17 +2,6 @@
   \- All notes
 
 .container
-  .is-page-horizontal-centered.new-note
-    = form_with model: current_user.notes.new, url: notes_path, method: :post, class: "navbar-item" do |form|
-      .is-flex.is-flex-direction-row
-        = form.text_field :title, placeholder: "Note title", class: "input note-title"
-        .pl-4
-        %button(type="submit" class="button is-primary")
-          - if mobile?
-            = fa_solid "play", size: 1
-          - else
-            Start new note
-
   .pt-4
     - @notes.in_groups_of(mobile? ? 1 : 4).each do |group|
       .columns

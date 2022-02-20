@@ -21,6 +21,13 @@
       .navbar-item
         .buttons
           .is-flex.is-flex-direction-row.is-align-items-center
+            = link_to new_note_path, class: "button is-primary" do
+              = fa_solid "plus", size: 1
+            - if mobile?
+              %span Start new note
+      .navbar-item
+        .buttons
+          .is-flex.is-flex-direction-row.is-align-items-center
             = link_to tag_cloud_path, class: "button is-primary" do
               = fa_solid "tags", size: 1
             - if mobile?
