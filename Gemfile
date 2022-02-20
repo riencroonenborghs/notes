@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.7.5"
 
 gem "acts-as-taggable-on"
+gem "browser"
 gem "dotenv-rails"
 gem "dragonfly"
 gem "cssbundling-rails"

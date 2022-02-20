@@ -72,6 +72,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
+    browser (5.3.1)
     builder (3.2.4)
     capybara (3.36.0)
       addressable
@@ -279,6 +280,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
+  browser
   capybara
   cssbundling-rails
   debug

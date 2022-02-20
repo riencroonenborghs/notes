@@ -5,3 +5,11 @@
     }
   }
 }
+
+@include mobile {
+  .navbar-menu {
+    .log-out {
+      margin-bottom: 0px;
+    }
+  }
+}

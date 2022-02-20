@@ -29,5 +29,9 @@
 .new-note {
   .note-title {
     width: 400px;
+
+    @include mobile {
+      width: auto;
+    }
   }
 }

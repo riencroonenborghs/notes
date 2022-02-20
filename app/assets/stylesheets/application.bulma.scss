@@ -50,3 +50,7 @@
 @import "markdown.scss";
 @import "notes.scss";
 @import "pagination.scss";
+
+.mobile-padding {
+  @extend .p-4;
+}

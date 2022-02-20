@@ -14,7 +14,8 @@
   %body(id="#{'authenticated' if user_signed_in?}" class="#{controller_name}_#{action_name}")
     - if user_signed_in?
       = render "/layouts/navbar"
-      = yield
+      %div(class="#{'mobile-padding' if mobile?}")
+        = yield
     - else
       .is-page-vertical-centered
         .is-page-horizontal-centered

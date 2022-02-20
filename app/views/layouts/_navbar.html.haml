@@ -1,16 +1,15 @@
-%nav.navbar(role="navigation" aria-label="main navigation")
+%nav.navbar(role="navigation" aria-label="main navigation" data-controller="navbar")
   .navbar-brand
     = link_to root_path, class: "navbar-item has-text-primary" do
       = fa_regular "sticky-note"
       .subtitle.pl-4.has-text-primary Notes
-    = link_to "", class: "navbar-burger", role: "button", "aria-label" => "menu", "aria-expanded" => "false", "data-target" => "navbar-mobile"do
+    = link_to "#", class: "navbar-burger", role: "button", "aria-label" => "menu", "aria-expanded" => "false", "data-target" => "navbar-mobile", data: { "navbar-target" => "burger", action: "click->navbar#burgerClicked" } do
       %span(aria-hidden="true")
       %span(aria-hidden="true")
       %span(aria-hidden="true")
 
-  #navbar-mobile.navbar-menu
+  #navbar-mobile.navbar-menu(data-navbar-target="menu")
     .navbar-start
-      -#= link_to "All notes", root_path, class: "navbar-item"
 
       = form_with scope: current_user.notes.new, url: note_search_path, method: :post, class: "navbar-item" do |form|
         .is-flex.is-flex-direction-row
@@ -18,35 +17,12 @@
           .pl-4
           %button(type="submit" class="button is-primary")
             = fa_solid "search", size: 1
-    -#
-      <a class="navbar-item">
-        Documentation
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
 
     .navbar-end
       .navbar-item
         .buttons
-          = button_to destroy_user_session_path, method: :delete, title: "Log out", class: "button is-primary" do
-            = fa_solid "lock", size: 1
+          .is-flex.is-flex-direction-row.is-align-items-center
+            = button_to destroy_user_session_path, method: :delete, title: "Log out", class: "button is-primary log-out" do
+              = fa_solid "lock", size: 1
+            - if mobile?
+              %span Log out
