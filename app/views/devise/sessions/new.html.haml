@@ -2,7 +2,7 @@
   \- Log in
 
 .is-page-horizontal-centered
-  %div(style="width: 450px")
+  %div(style="width: #{mobile? ? '300px' : '450px'}")
     .subtitle.pt-3 Log in
 
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |form|
