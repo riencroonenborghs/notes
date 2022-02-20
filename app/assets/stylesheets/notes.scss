@@ -35,3 +35,12 @@
     }
   }
 }
+
+.notes_tag_cloud {
+  .tag_cloud {
+    .css1 { @extend .is-size-4; @extend .has-background-info-light; }
+    .css2 { @extend .is-size-3; @extend .has-background-info; }
+    .css3 { @extend .is-size-2; @extend .has-background-primary-light; }
+    .css4 { @extend .is-size-1; @extend .has-background-primary; }
+  }
+}

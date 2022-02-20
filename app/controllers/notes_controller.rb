@@ -52,6 +52,7 @@ class NotesController < ApplicationController
 
   def search
     @query = params.require(:note).permit(:query)[:query]
+    redirect_to root_path and return unless @query.present?
 
     service = SearchService.call(
       user: current_user,
@@ -59,6 +60,10 @@ class NotesController < ApplicationController
       page: params[:page]
     )
     @notes = service.notes
+  end
+
+  def tag_cloud
+    @tags = current_user.notes.tag_counts_on(:tags)
   end
 
   private

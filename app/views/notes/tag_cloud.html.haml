@@ -1,0 +1,9 @@
+- content_for :title do
+  \- Tag cloud
+
+.container
+  .pt-4.tag_cloud
+    - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+      = link_to notes_tagged_path(tag.name) do
+        %span.tag(class=css_class)
+          = tag.name

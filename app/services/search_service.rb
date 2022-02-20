@@ -12,7 +12,6 @@ class SearchService < AppService
     scope = user
       .notes
       .order(created_at: :desc)
-      .page(page)
 
     title_scope = scope.where("upper(title) like ?", "%#{query}%")
     content_scope = scope.where("upper(markdown) like ?", "%#{query}%")

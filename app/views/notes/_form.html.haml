@@ -11,7 +11,7 @@
     </div>
 
   .columns
-    - if note.image
+    - if note.image&.url
       .column.is-one-quarter
         %figure.image.is-128x128
           = image_tag note.image.url
