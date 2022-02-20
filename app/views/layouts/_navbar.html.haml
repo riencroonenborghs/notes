@@ -10,7 +10,6 @@
 
   #navbar-mobile.navbar-menu(data-navbar-target="menu")
     .navbar-start
-
       = form_with scope: current_user.notes.new, url: note_search_path, method: :post, class: "navbar-item" do |form|
         .is-flex.is-flex-direction-row
           = form.text_field :query, placeholder: "Search ...", class: "input query"
@@ -21,8 +20,13 @@
     .navbar-end
       .navbar-item
         .buttons
-          = link_to tag_cloud_path, class: "button is-primary" do
-            = fa_solid "tags", size: 1
+          .is-flex.is-flex-direction-row.is-align-items-center
+            = link_to tag_cloud_path, class: "button is-primary" do
+              = fa_solid "tags", size: 1
+            - if mobile?
+              %span Tag Cloud
+      .navbar-item
+        .buttons
           .is-flex.is-flex-direction-row.is-align-items-center
             = button_to destroy_user_session_path, method: :delete, title: "Log out", class: "button is-primary log-out" do
               = fa_solid "lock", size: 1
