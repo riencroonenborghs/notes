@@ -4,7 +4,7 @@
 
 .container
   - if @note.image
-    %figure(class="image")
+    %figure(class="image #{mobile? ? 'is-max-width' : 'is-256x256'} is-rounded")
       = image_tag @note.image.url
 
   .title.pt-3.mb-0
@@ -13,7 +13,7 @@
   %time.is-size-8.has-text-weight-lighter(datetime="#{@note.created_at.to_formatted_s(:note_created_at)}")
     = @note.created_at.to_formatted_s(:note_created_at)
 
-  %p
+  .html
     = raw @note.html
   
   .is-flex.is-flex-direction-row.pt-4
